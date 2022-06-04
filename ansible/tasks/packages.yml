@@ -6,9 +6,9 @@
     - apt
 
 - name: Include python package list
-  include_vars: vars/pip3.yml
+  include_vars: vars/pip.yml
   tags:
-    - pip3
+    - pip
 
 - name: Include snap package list
   include_vars: vars/snap.yml
@@ -33,13 +33,14 @@
     with_dict: "{{apt}}"
 
   - name: Manage python packages
-    pip3:
+    pip:
       name: "{{ item.key }}"
+      executable: pip3
       state: "{{ item.value.state | default('latest') }}"
-      executable: "{{ item.value.executable | default('pip3') }}"
-    with_dict: "{{pip3}}"
+      executable: "{{ item.value.executable | default('pip') }}"
+    with_dict: "{{pip}}"
     tags:
-      - pip3
+      - pip
 
   - name: Manage snap packages
     apt:
@@ -89,12 +90,12 @@
       - brew_cask
 
   - name: Manage python packages
-    pip3:
+    pip:
       name: "{{ item.key }}"
       state: "{{ item.value.state | default('latest') }}"
-      executable: "{{ item.value.executable | default('pip3') }}"
-    with_dict: "{{pip3}}"
+      executable: "{{ item.value.executable | default('pip') }}"
+    with_dict: "{{pip}}"
     tags:
-      - pip3
+      - pip
 
   when: ansible_os_family == "Darwin"
