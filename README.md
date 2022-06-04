@@ -4,7 +4,7 @@ My dotfiles powered by Ansible.
 ## Usage
 
 ```
-$ git clone https://github.com/nakabonne/dotfiles.git ~/.dotfiles
+$ git clone https://github.com/nakabonne/dotfiles-ansible.git ~/.dotfiles
 $ cd ~/.dotfiles/init
 $ ./setup.sh
 ```
