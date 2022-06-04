@@ -72,3 +72,13 @@
     # - https://github.com/monochromegane/the_platinum_searcher
     # - https://github.com/x-motemen/ghq
 
+    - include: tasks/ubuntu.yml
+      when: ansible_os_family == "Debian"
+      tags:
+        - arch
+
+    - include: tasks/macos.yml
+      when: ansible_os_family == "Darwin"
+      tags:
+        - macos
+
