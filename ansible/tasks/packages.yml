@@ -34,6 +34,7 @@
   become: true
   when: ansible_os_family == "Debian"
   tags: apt
+  # FIXME: enable snap
 
 - block:
   - name: Update/Upgrade Homebrew

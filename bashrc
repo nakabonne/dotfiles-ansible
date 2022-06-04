@@ -3,7 +3,7 @@ if [ -f ~/.bashrc_local ] ; then
 fi
 
 # enhancd
-source $HOME/.enhancd/init.sh
+[ -f $HOME/.enhancd/init.sh ] && source $HOME/.enhancd/init.sh
 ENHANCD_FILTER=fzf; export ENHANCD_FILTER
 
 # starship
@@ -45,7 +45,9 @@ function promps {
     PS1="${TITLEBAR}${GREEN}${BASE}${WHITE}: ${RED}\W${GRAY}\$(parse_git_branch)${BLUE}\${WHITE} \[\e[0m\]\n\\$ "
 }
 
-eval "$(direnv hook bash)"
+if type "direnv"; then
+  eval "$(direnv hook bash)"
+fi
 
 export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

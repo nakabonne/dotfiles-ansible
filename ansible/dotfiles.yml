@@ -66,9 +66,27 @@
         dest: ~/.enhancd
         update: yes
 
+    - name: Download starship
+      uri:
+        url: https://starship.rs/install.sh
+        return_content: yes
+      register: starship_installer
+    - name: Install starship
+      shell:
+        cmd: sh
+        stdin: "{{ starship_installer.content }}"
 
-    # TODO: Install via curl
-    # - https://starship.rs/#quick-install
+    - name: Download fzf
+      uri:
+        url: https://raw.githubusercontent.com/junegunn/fzf/master/install
+        return_content: yes
+      register: fzf_installer
+    - name: Install fzf
+      shell:
+        cmd: sh
+        stdin: "{{ fzf_installer.content }}"
+
+    # FIXME: Install via curl
     # - https://github.com/monochromegane/the_platinum_searcher
     # - https://github.com/x-motemen/ghq
 
