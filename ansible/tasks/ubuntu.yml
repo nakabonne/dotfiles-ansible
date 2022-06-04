@@ -1,0 +1,16 @@
+---
+- block:
+  - name: Add user to wheel and wireshark group
+    user:
+      name: "{{ ansible_user_id }}"
+      groups: wheel,wireshark
+      append: true
+
+  - name: Add user to docker group
+    user:
+      name: "{{ ansible_user_id }}"
+      groups: docker
+      append: true
+    when: sudo_without_password
+
+  become: true

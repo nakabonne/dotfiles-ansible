@@ -38,6 +38,7 @@ case "$(uname -s)" in
 
                 case "$ID" in
                     debian | ubuntu)
+                        sudo apt update
                         if [[ ! -x /usr/bin/ansible ]]; then
                             echo "[i] Install Ansible"
                             sudo apt-get install -y ansible
