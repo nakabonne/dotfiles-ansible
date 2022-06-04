@@ -8,11 +8,6 @@
       tags:
         - always
 
-    - name: Make sure dotfiles are present
-      git:
-        repo: https://github.com/nakabonne/dotfiles-ansible.git
-        dest: ~/.dotfiles
-
     - name: Allow sudo without password
       lineinfile:
         dest: /etc/sudoers
