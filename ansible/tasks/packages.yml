@@ -20,19 +20,18 @@
   tags:
     - brew_taps
 
-- become: true
-  when: ansible_os_family == "Debian"
-  tags: apt
-  block:
+- block:
   - name: Update/Upgrade apt
     apt:
       update_cache: true
       upgrade: dist
+
   - name: Manage apt packages
     apt:
       name: "{{ item.key }}"
       state: "{{ item.value.state | default('latest') }}"
     with_dict: "{{apt}}"
+
   - name: Manage python packages
     pip3:
       name: "{{ item.key }}"
@@ -41,6 +40,7 @@
     with_dict: "{{pip3}}"
     tags:
       - pip3
+
   - name: Manage snap packages
     apt:
       name: "{{ item.key }}"
@@ -48,6 +48,10 @@
     with_dict: "{{snap}}"
     tags:
       - snap
+
+  become: true
+  when: ansible_os_family == "Debian"
+  tags: apt
 
 - block:
   - name: Update/Upgrade Homebrew
