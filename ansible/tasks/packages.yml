@@ -35,9 +35,8 @@
   - name: Manage python packages
     pip:
       name: "{{ item.key }}"
-      executable: pip3
       state: "{{ item.value.state | default('latest') }}"
-      executable: "{{ item.value.executable | default('pip') }}"
+      executable: "{{ item.value.executable | default('pip3') }}"
     with_dict: "{{pip}}"
     tags:
       - pip
