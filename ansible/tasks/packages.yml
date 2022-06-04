@@ -1,0 +1,12 @@
+
+---
+- name: Include APT package list
+  include_vars: vars/apt.yml
+  tags:
+    - apt
+
+- name: Include brew taps list
+  include_vars: vars/taps.yml
+  tags:
+    - brew_taps
+

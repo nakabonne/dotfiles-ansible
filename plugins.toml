@@ -1,0 +1,214 @@
+##############
+### Common ###
+##############
+
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+# NOTE: 最新バージョンの破壊的変更によりgrepが効かないため暫定対応
+# 詳細 -> https://github.com/Shougo/denite.nvim/issues/648#issuecomment-499296944
+rev = '29bfd4c53271c7a150def2388e059746ae4c1713'
+hook_add = '''
+  call denite#custom#option('default', 'prompt', '>')
+
+  " grep
+  nnoremap <silent> ,g :<C-u>Denite -buffer-name=search -mode=normal grep<CR>
+  " 結果再表示
+  nnoremap <silent> ,r :<C-u>Denite -resume -buffer-name=search<CR>
+  call denite#custom#var('grep', 'command', ['pt'])
+	call denite#custom#var('grep', 'default_opts',
+			\ ['--nogroup', '--nocolor', '--smart-case'])
+	call denite#custom#var('grep', 'recursive_opts', [])
+	call denite#custom#var('grep', 'pattern_opt', [])
+	call denite#custom#var('grep', 'separator', ['--'])
+	call denite#custom#var('grep', 'final_opts', [])
+
+  " buffer
+  nnoremap <silent> ,f :<C-u>Denite buffer<CR>
+	call denite#custom#var('buffer', 'date_format', '')
+
+  call denite#custom#map('insert', 'jj', '<denite:enter_mode:normal>')
+'''
+
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+hook_add = '''
+  map <C-n> :NERDTreeToggle<CR>
+'''
+
+# statuslineの表示
+[[plugins]]
+repo = 'vim-airline/vim-airline'
+hook_add = '''
+  let g:airline#extensions#tabline#enabled = 1
+  let g:airline#extensions#tabline#formatter = 'unique_tail'
+'''
+
+# ファイル曖昧検索
+[[plugins]]
+repo = 'ctrlpvim/ctrlp.vim'
+
+# カッコを閉じる
+[[plugins]]
+repo = 'cohama/lexima.vim'
+
+# resizing of windows
+[[plugins]]
+repo = 'simeji/winresizer'
+
+# カラースキーマ
+[[plugins]]
+repo = 'tomasr/molokai'
+hook_add = '''
+  colorscheme molokai
+  let g:molokai_original = 1
+  let g:rehash256 = 1
+'''
+
+[[plugins]]
+repo = 'flazz/vim-colorschemes'
+
+# 非同期補完
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+hook_add = '''
+  if !has('nvim')
+    call dein#add('roxma/nvim-yarp')
+    call dein#add('roxma/vim-hug-neovim-rpc')
+  endif
+  let g:deoplete#enable_at_startup = 1
+'''
+
+# 構文チェック
+[[plugins]]
+repo = 'neomake/neomake'
+hook_add = '''
+  autocmd! BufWritePost * Neomake
+'''
+
+# snippets
+[[plugins]]
+repo = 'SirVer/ultisnips'
+
+[[plugins]]
+repo = 'honza/vim-snippets'
+
+# terminal
+[[plugins]]
+repo = 'kassio/neoterm'
+hook_add = '''
+  let g:neoterm_autoinsert = 1
+  let g:neoterm_default_mod='belowright'
+  tnoremap <silent> jj <C-\><C-n><C-w>
+  nnoremap <silent> ,t :Tnew<CR><C-w>
+'''
+
+# replace
+[[plugins]]
+repo = 'kana/vim-operator-replace'
+hook_add = '''
+  map _  <Plug>(operator-replace)
+'''
+[[plugins]]
+repo = 'kana/vim-operator-user'
+
+# spaceハイライト
+[[plugins]]
+repo = 'ntpeters/vim-better-whitespace'
+
+################
+### Language ###
+################
+
+# LSP
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
+[[plugins]]
+repo = 'mattn/vim-lsp-settings'
+
+[[plugins]]
+repo = 'fatih/vim-go'
+hook_add = '''
+  let g:go_highlight_functions = 1
+  let g:go_highlight_methods = 1
+  let g:go_highlight_structs = 1
+  let g:go_highlight_extra_types = 1
+  let g:go_highlight_operators = 1
+  let g:go_highlight_function_calls = 1
+  let g:go_highlight_types = 1
+  let g:go_highlight_fields = 1
+
+  let g:go_metalinter_autosave = 0
+  " let g:go_metalinter_autosave_enabled = ['vet']
+  " let g:go_metalinter_enabled = ['vet']
+  " let g:go_metalinter_deadline = "5s"
+
+  :command Gi GoImports
+  :command Gc GoCallers
+  :command Gif GoIfErr
+  :command Gf GoFillStruct
+  " カーソル下のinterfaceを実装する構造体一覧
+  :command Gimpl GoImplements
+'''
+
+[[plugins]]
+repo = 'rust-lang/rust.vim'
+hook_add = '''
+  let g:rustfmt_autosave = 1
+'''
+
+[[plugins]]
+repo = 'b4b4r07/vim-hcl'
+
+###########
+### Git ###
+###########
+
+# git差分をヴィジュアル表示
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+hook_add = '''
+  set updatetime=100
+'''
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'ruanyl/vim-gh-line'
+
+################
+### Markdown ###
+################
+
+[[plugins]]
+repo = 'plasticboy/vim-markdown'
+hook_add = '''
+  " 自動で折りたたまないようにする
+  let g:vim_markdown_folding_disabled=1
+'''
+[[plugins]]
+repo = 'previm/previm'
+hook_add = '''
+  autocmd BufRead,BufNewFile *.mkd  set filetype=markdown
+  autocmd BufRead,BufNewFile *.md  set filetype=markdown
+  let g:previm_open_cmd='open -a Google\ Chrome'
+  :command Po PrevimOpen
+'''
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+
+
+##############
+### Others ###
+##############
+
+# google翻訳
+[[plugins]]
+repo = 'haya14busa/vim-open-googletranslate'
+hook_add = '''
+  let g:opengoogletranslate#openbrowsercmd = 'electron-open --without-focus'
+  vnoremap t :OpenGoogleTranslate<CR>
+'''

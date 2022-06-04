@@ -1,0 +1,8 @@
+[directory]
+truncation_length = 1
+
+[git_branch]
+symbol = "ᚠ "
+
+[golang]
+disabled = true

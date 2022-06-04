@@ -1,0 +1,21 @@
+{
+  "editor.formatOnSave": true,
+  "workbench.colorTheme": "Monokai",
+  "go.formatTool": "gofmt",
+  "vim.vimrc.enable": true,
+  "vim.vimrc.path": "$HOME/.vimrc",
+  "vim.useSystemClipboard": true,
+  "redhat.telemetry.enabled": false,
+  "eslint.format.enable": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "editor.tabSize": 2,
+  "workbench.startupEditor": "none",
+  "workbench.tree.indent": 16,
+  "files.watcherExclude": {
+    "**/.venv/**": true
+  },
+  "editor.fontSize": 13,
+  "editor.minimap.enabled": false
+}

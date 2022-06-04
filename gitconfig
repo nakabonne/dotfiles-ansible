@@ -1,0 +1,26 @@
+[user]
+	name = nakabonne
+	email = ryo@nakao.dev
+[alias]
+  l = log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'
+  c = commit
+  a = add -A
+  ac = !git add -A && git commit
+  s = status
+  p = push
+  b = branch
+  co = checkout
+[core]
+	editor = nvim
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
+[ghq]
+  root = ~/src
+[pull]
+	rebase = false
+[user]
+  signingkey = EF558144
+[gpg]
+  program = gpg
+[commit]
+  gpgsign = true

@@ -1,0 +1,74 @@
+---
+- name: Playbook to manage nakabonne dotfiles (https://github.com/nakabonne/dotfiles-ansible)
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: load custom vars
+      include_vars: ../vars.yml
+      tags:
+        - always
+
+    - name: Make sure dotfiles are present
+      git:
+        repo: https://github.com/nakabonne/dotfiles-ansible.git
+        dest: ~/.dotfiles
+
+    - name: Allow sudo without password
+      lineinfile:
+        dest: /etc/sudoers
+        state: present
+        line: "{{ ansible_user_id }}	ALL=NOPASSWD: ALL"
+        insertafter:  '^%admin\tALL=\(ALL\) ALL'
+        validate: "visudo -cf %s"
+      become: yes
+      when: sudo_without_password and ansible_os_family == "Darwin"
+
+    - name: Install dein.vim
+      git:
+        repo: https://github.com/Shougo/dein.vim.git
+        dest: ~/.local/share/dein/repos/github.com/Shougo/dein.vim
+        update: yes
+
+
+    - name: Create folder
+      file:
+        path: "{{item}}"
+        state: directory
+      loop:
+        - "~/.config/nvim/"
+        - "~/.config/dein/"
+
+    - include: tasks/link_files.yml
+      tags:
+        - links
+
+    # Install via packages
+    - include: tasks/packages.yml
+      tags:
+        - packages
+
+    # Install via Git
+    - name: Install pyenv
+      git:
+        repo: https://github.com/pyenv/pyenv.git
+        dest: ~/.pyenv
+        update: yes
+
+    - name: Install anyenv
+      git:
+        repo: https://github.com/anyenv/anyenv
+        dest: ~/.anyenv
+        update: yes
+
+    - name: Install enhancd
+      git:
+        repo: https://github.com/b4b4r07/enhancd
+        dest: ~/.enhancd
+        update: yes
+
+
+    # TODO: Install via curl
+    # - https://starship.rs/#quick-install
+    # - https://github.com/monochromegane/the_platinum_searcher
+    # - https://github.com/x-motemen/ghq
+
