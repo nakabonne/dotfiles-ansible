@@ -3,6 +3,11 @@
   hosts: localhost
   connection: local
   tasks:
+    - name: load custom vars
+      include_vars: ../vars.yml
+      tags:
+        - always
+
     - name: Make sure dotfiles are present
       git:
         repo: https://github.com/nakabonne/dotfiles-ansible.git
