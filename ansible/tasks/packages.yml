@@ -5,36 +5,49 @@
   tags:
     - apt
 
+- name: Include python package list
+  include_vars: vars/pip3.yml
+  tags:
+    - pip3
+
+- name: Include snap package list
+  include_vars: vars/snap.yml
+  tags:
+    - snap
+
 - name: Include brew taps list
   include_vars: vars/taps.yml
   tags:
     - brew_taps
 
-- block:
+- become: true
+  when: ansible_os_family == "Debian"
+  tags: apt
+  block:
   - name: Update/Upgrade apt
     apt:
       update_cache: true
       upgrade: dist
-
   - name: Manage apt packages
     apt:
       name: "{{ item.key }}"
       state: "{{ item.value.state | default('latest') }}"
     with_dict: "{{apt}}"
-
   - name: Manage python packages
-    pip:
+    pip3:
       name: "{{ item.key }}"
       state: "{{ item.value.state | default('latest') }}"
       executable: "{{ item.value.executable | default('pip3') }}"
-    with_dict: "{{pip}}"
+    with_dict: "{{pip3}}"
     tags:
-      - pip
-
-  become: true
-  when: ansible_os_family == "Debian"
-  tags: apt
-  # FIXME: enable snap
+      - pip3
+  - name: Manage snap packages
+    apt:
+      name: "{{ item.key }}"
+      state: "{{ item.value.state | default('latest') }}"
+    with_dict: "{{snap}}"
+    tags:
+      - snap
 
 - block:
   - name: Update/Upgrade Homebrew
@@ -72,12 +85,12 @@
       - brew_cask
 
   - name: Manage python packages
-    pip:
+    pip3:
       name: "{{ item.key }}"
       state: "{{ item.value.state | default('latest') }}"
       executable: "{{ item.value.executable | default('pip3') }}"
-    with_dict: "{{pip}}"
+    with_dict: "{{pip3}}"
     tags:
-      - pip
+      - pip3
 
   when: ansible_os_family == "Darwin"
