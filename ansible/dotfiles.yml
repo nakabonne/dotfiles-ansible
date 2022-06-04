@@ -68,7 +68,7 @@
       register: starship_installer
     - name: Install starship
       shell:
-        cmd: sh
+        cmd: sh -s -- -y
         stdin: "{{ starship_installer.content }}"
 
     - name: Download fzf
