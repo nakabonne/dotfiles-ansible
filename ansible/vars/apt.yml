@@ -21,4 +21,7 @@ apt:
   liblzma-dev:
   neovim:
   fzf:
-  # FIXME: Add docker
+  docker-ce:
+  docker-ce-cli:
+  containerd.io:
+  docker-compose-plugin:

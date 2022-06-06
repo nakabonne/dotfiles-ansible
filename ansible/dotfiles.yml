@@ -37,6 +37,10 @@
       tags:
         - links
 
+    - include: tasks/docker.yml
+      tags:
+        - docker
+
     # Install via packages
     - include: tasks/packages.yml
       tags:

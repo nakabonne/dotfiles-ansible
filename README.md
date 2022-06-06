@@ -14,3 +14,7 @@ $ ./setup.sh
 
 - Ubuntu 20.04
 - macOS
+
+## Inspired by
+
+https://github.com/elnappo/dotfiles
