@@ -6,7 +6,6 @@ My dotfiles powered by Ansible.
 ```
 $ git clone https://github.com/nakabonne/dotfiles-ansible.git ~/.dotfiles
 $ cd ~/.dotfiles/init
-$ chmod +x setup.sh
 $ ./setup.sh
 ```
 
