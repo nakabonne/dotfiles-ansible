@@ -78,7 +78,7 @@
     - include: tasks/ubuntu.yml
       when: ansible_os_family == "Debian"
       tags:
-        - arch
+        - ubuntu
 
     - include: tasks/macos.yml
       when: ansible_os_family == "Darwin"

@@ -12,5 +12,5 @@ $ ./setup.sh
 
 ## Supported Destribution
 
-- Ubuntu
+- Ubuntu 20.04
 - macOS

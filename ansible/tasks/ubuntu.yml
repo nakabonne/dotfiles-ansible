@@ -1,9 +1,9 @@
 ---
 - block:
-  - name: Add user to wheel and wireshark group
+  - name: Add user to wheel group
     user:
       name: "{{ ansible_user_id }}"
-      groups: wheel,wireshark
+      groups: wheel
       append: true
 
   - name: Add user to docker group
