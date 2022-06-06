@@ -1,9 +1,9 @@
 ---
 - block:
-  - name: Add user to wheel group
+  - name: Add user to sudo group
     user:
       name: "{{ ansible_user_id }}"
-      groups: wheel
+      groups: sudo
       append: true
 
   - name: Add user to docker group
