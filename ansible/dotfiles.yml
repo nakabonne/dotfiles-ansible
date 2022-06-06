@@ -78,16 +78,19 @@
         cmd: sh -s -- -y
         stdin: "{{ starship_installer.content }}"
 
-    - name: Download dein
-      uri:
-        url: https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh
-        return_content: yes
-        dest: ~/dein_installer.sh
-      register: dein_installer
-    - name: Install dein
-      shell:
-        cmd: sh ~/dein_installer.sh ~/.cache/dein
-        stdin: "{{ dein_installer.content }}"
+    # FIXME: Install dein
+    # See: https://github.com/Shougo/dein.vim#quick-start
+    # - name: Download dein
+    #   uri:
+    #     url: https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh
+    #     return_content: yes
+    #     dest: ~/dein_installer.sh
+    # - name: Install dein
+    #   shell:
+    #     cmd: sh ~/dein_installer.sh ~/.config/nvim
+
+    # FIXME: Install neovim via PPA
+    # See: https://github.com/neovim/neovim/wiki/Installing-Neovim#ubuntu
 
     # FIXME: Install via curl
     # - https://github.com/monochromegane/the_platinum_searcher

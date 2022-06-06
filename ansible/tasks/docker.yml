@@ -5,7 +5,7 @@
       update_cache: true
       upgrade: dist
 
-  - name: Install required system packages
+  - name: Install required system packages for Docker
     apt:
       pkg:
         - ca-certificates

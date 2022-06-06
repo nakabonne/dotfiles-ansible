@@ -19,7 +19,6 @@ apt:
   libxmlsec1-dev:
   libffi-dev:
   liblzma-dev:
-  neovim:
   docker-ce:
   docker-ce-cli:
   containerd.io:
