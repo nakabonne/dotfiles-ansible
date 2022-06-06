@@ -41,11 +41,11 @@
     tags:
       - pip
 
-  # FIXME: Unable to install go
   - name: Manage snap packages
     snap:
       name: "{{ item.key }}"
-      classic: "{{ item.value.classic | default('no') }}"
+      #classic: "{{ item.value.classic | default('no') }}"
+      classic: "no"
     with_dict: "{{snap}}"
     tags:
       - snap
