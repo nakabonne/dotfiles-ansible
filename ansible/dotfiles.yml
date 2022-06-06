@@ -73,7 +73,7 @@
         depth: 1
     - name: Install fzf
       shell:
-        cmd: sh -s -- -y ~/.fzf/install
+        cmd: ~/.fzf/install -all
 
     - name: Download starship
       uri:

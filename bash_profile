@@ -61,7 +61,6 @@ fi
 # for bash_completion
 [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 
-
-eval "$(/opt/homebrew/bin/brew shellenv)"
+[ -f /opt/homebrew/bin/brew ] && eval "$(/opt/homebrew/bin/brew shellenv)"
 
 [ -f /$HOME/.cargo/env ] &&. "$HOME/.cargo/env"
