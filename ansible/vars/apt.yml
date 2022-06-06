@@ -20,4 +20,5 @@ apt:
   libffi-dev:
   liblzma-dev:
   neovim:
+  fzf:
   # FIXME: Add docker

@@ -71,16 +71,6 @@
         cmd: sh -s -- -y
         stdin: "{{ starship_installer.content }}"
 
-    - name: Download fzf
-      uri:
-        url: https://raw.githubusercontent.com/junegunn/fzf/master/install
-        return_content: yes
-      register: fzf_installer
-    - name: Install fzf
-      shell:
-        cmd: sh
-        stdin: "{{ fzf_installer.content }}"
-
     # FIXME: Install via curl
     # - https://github.com/monochromegane/the_platinum_searcher
     # - https://github.com/x-motemen/ghq
