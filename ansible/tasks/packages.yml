@@ -45,7 +45,7 @@
   - name: Manage snap packages
     snap:
       name: "{{ item.key }}"
-      state: "{{ item.value.state | default('latest') }}"
+      classic: "{{ item.value.state | default('no') }}"
     with_dict: "{{snap}}"
     tags:
       - snap
