@@ -95,6 +95,8 @@
     # FIXME: Install via curl
     # - https://github.com/monochromegane/the_platinum_searcher
     # - https://github.com/x-motemen/ghq
+    # - https://direnv.net/docs/installation.html#from-binary-builds
+    # - https://github.com/jesseduffield/lazygit#go
 
     - include: tasks/ubuntu.yml
       when: ansible_os_family == "Debian"

@@ -7,6 +7,7 @@
   loop:
     - { src: "~/.dotfiles/bash_profile", dest: "~/.bash_profile"}
     - { src: "~/.dotfiles/bashrc", dest: "~/.bashrc"}
+    - { src: "~/.dotfiles/gitconfig", dest: "~/.gitconfig"}
     - { src: "~/.dotfiles/tmux.conf", dest: "~/.tmux.conf"}
     - { src: "~/.dotfiles/vimrc", dest: "~/.vimrc"}
     - { src: "~/.dotfiles/vimrc", dest: "~/.ideavimrc"}
