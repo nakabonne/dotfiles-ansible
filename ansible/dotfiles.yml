@@ -18,13 +18,6 @@
       become: yes
       when: sudo_without_password and ansible_os_family == "Darwin"
 
-    - name: Install dein.vim
-      git:
-        repo: https://github.com/Shougo/dein.vim.git
-        dest: ~/.local/share/dein/repos/github.com/Shougo/dein.vim
-        update: yes
-
-
     - name: Create folder
       file:
         path: "{{item}}"
@@ -84,6 +77,17 @@
       shell:
         cmd: sh -s -- -y
         stdin: "{{ starship_installer.content }}"
+
+    - name: Download dein
+      uri:
+        url: https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh
+        return_content: yes
+        dest: ~/dein_installer.sh
+      register: dein_installer
+    - name: Install dein
+      shell:
+        cmd: sh ~/dein_installer.sh ~/.cache/dein
+        stdin: "{{ dein_installer.content }}"
 
     # FIXME: Install via curl
     # - https://github.com/monochromegane/the_platinum_searcher
