@@ -1,7 +1,5 @@
 ---
 - block:
-  become: true
-  when: ansible_os_family == "Debian"
   - name: Update/Upgrade apt
     apt:
       update_cache: true
@@ -26,3 +24,6 @@
     apt_repository:
       repo: deb https://download.docker.com/linux/ubuntu focal stable
       state: present
+
+  become: true
+  when: ansible_os_family == "Debian"
