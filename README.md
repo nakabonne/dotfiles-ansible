@@ -12,7 +12,7 @@ $ ./setup.sh
 
 ## Supported Destribution
 
-- Ubuntu 20.04
+- Ubuntu 18.04
 - macOS
 
 ## Inspired by

@@ -65,6 +65,16 @@
         dest: ~/.enhancd
         update: yes
 
+    - name: Download fzf
+      git:
+        repo: https://github.com/junegunn/fzf.git
+        dest: ~/.fzf
+        update: yes
+        depth: 1
+    - name: Install fzf
+      shell:
+        cmd: sh -s -- -y ~/.fzf/install
+
     - name: Download starship
       uri:
         url: https://starship.rs/install.sh
