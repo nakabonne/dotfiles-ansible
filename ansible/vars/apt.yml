@@ -19,6 +19,7 @@ apt:
   libxmlsec1-dev:
   libffi-dev:
   liblzma-dev:
+  jq:
   docker-ce:
   docker-ce-cli:
   containerd.io:
