@@ -6,6 +6,9 @@ fi
 [ -f $HOME/.enhancd/init.sh ] && source $HOME/.enhancd/init.sh
 ENHANCD_FILTER=fzf; export ENHANCD_FILTER
 
+# fzf
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
 # starship
 export PATH=/opt/homebrew/bin:$PATH
 eval "$(starship init bash)"
