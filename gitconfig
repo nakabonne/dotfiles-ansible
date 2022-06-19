@@ -12,8 +12,6 @@
   co = checkout
 [core]
 	editor = nvim
-[url "ssh://git@github.com/"]
-	insteadOf = https://github.com/
 [ghq]
   root = ~/src
 [pull]
