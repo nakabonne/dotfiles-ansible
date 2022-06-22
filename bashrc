@@ -27,6 +27,9 @@ alias t='tmux'
 alias tn='tmux new -s'
 alias ta='tmux a -t'
 alias tk='tmux kill-server'
+alias pbc='pbgopy copy'
+alias pbp='pbgopy paste'
+alias pbcli='pbgopy paste | pbcopy'
 
 # prompt
 function parse_git_branch {
