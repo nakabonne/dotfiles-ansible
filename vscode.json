@@ -17,5 +17,8 @@
     "**/.venv/**": true
   },
   "editor.fontSize": 13,
-  "editor.minimap.enabled": false
+  "editor.minimap.enabled": false,
+  "files.associations": {
+    "*.nomad": "hcl"
+  }
 }
