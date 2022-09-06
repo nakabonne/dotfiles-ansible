@@ -58,6 +58,9 @@ if [ $ITERM_SESSION_ID ]; then
   addToPromptCommand 'echo -ne "\033];${PWD##*/}\007"'
 fi
 
+# Pbgopy
+export PBGOPY_SERVER="http://localhost:9090"
+
 # for bash_completion
 [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 
