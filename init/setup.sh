@@ -23,12 +23,6 @@ case "$(uname -s)" in
             echo "[i] Install Ansible"
             /opt/homebrew/bin/brew install ansible
         fi
-
-        # set macos defaults
-        echo "[i] Set some specific macOS settings"
-        set +e
-        ./macos.bash
-        set -e
         ;;
 
     Linux)
@@ -85,7 +79,7 @@ fi
 
 # Run main playbook
 echo "[i] Run Playbook"
-ansible-playbook ../ansible/dotfiles.yml --ask-become-pass
+/opt/homebrew/bin/ansible-playbook ../ansible/dotfiles.yml --ask-become-pass
 
 echo "[i] From now on you can use $ dotfiles to manage your dotfiles"
 echo "[i] Done."
