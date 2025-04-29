@@ -21,7 +21,7 @@ case "$(uname -s)" in
         # install ansible
         if [[ ! -x /usr/local/bin/ansible ]]; then
             echo "[i] Install Ansible"
-            brew install ansible
+            /opt/homebrew/bin/brew install ansible
         fi
 
         # set macos defaults
