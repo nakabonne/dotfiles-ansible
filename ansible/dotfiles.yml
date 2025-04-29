@@ -4,7 +4,7 @@
   connection: local
   tasks:
     - name: load custom vars
-      import_tasks_vars: ../vars.yml
+      include_vars: ../vars.yml
       tags:
         - always
 
