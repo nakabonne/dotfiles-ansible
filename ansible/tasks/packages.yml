@@ -97,14 +97,3 @@
   #   with_dict: "{{casks}}"
   #   tags:
   #     - brew_cask
-
-  - name: Manage python packages
-    pip:
-      name: "{{ item.key }}"
-      state: "{{ item.value.state | default('latest') }}"
-      executable: "{{ item.value.executable | default('pip') }}"
-    with_dict: "{{pip}}"
-    tags:
-      - pip
-
-  when: ansible_os_family == "Darwin"
