@@ -25,6 +25,11 @@
   tags:
     - brew_formula
 
+- name: Include brew cask list
+  include_vars: vars/brew_casks.yml
+  tags:
+    - brew_cask
+
 - block:
   - name: Update/Upgrade apt
     apt:
