@@ -73,13 +73,13 @@
       - brew_formula
       - brew_cask
 
-  - name: Manage taps
-    homebrew_tap:
-      name: "{{ item.key }}"
-      state: "{{ item.value.state | default('present') }}"
-    with_dict: "{{taps}}"
-    tags:
-      - brew_taps
+  # - name: Manage taps
+  #   homebrew_tap:
+  #     name: "{{ item.key }}"
+  #     state: "{{ item.value.state | default('present') }}"
+  #   with_dict: "{{taps}}"
+  #   tags:
+  #     - brew_taps
 
   - name: Manage formula
     homebrew:
@@ -90,13 +90,13 @@
     tags:
       - brew_formula
 
-  - name: Manage casks
-    homebrew_cask:
-      name: "{{ item.key }}"
-      state: "{{ item.value.state | default('present') }}"
-    with_dict: "{{casks}}"
-    tags:
-      - brew_cask
+  # - name: Manage casks
+  #   homebrew_cask:
+  #     name: "{{ item.key }}"
+  #     state: "{{ item.value.state | default('present') }}"
+  #   with_dict: "{{casks}}"
+  #   tags:
+  #     - brew_cask
 
   - name: Manage python packages
     pip:
